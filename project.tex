@@ -66,22 +66,23 @@
 \date{}
 \maketitle
 
-In this project you will implement a document exploration system for the \href{https://simple.wikipedia.org/wiki/Main_Page}{Simple English Wikipedia}\cite{url:sew}: Given an article, we want to obtain a number of similar articles, that can be used for recommendation and exploration. For this you will implement the Latent-Dirichlet-Allocation inference algorithm, based on on Gibbs sampling as described in \cite{heinrich:pefta}. Finally you will have to write a project report where you present your implementation and results. \\
+In this project, you will implement a document exploration system for the \href{https://simple.wikipedia.org/wiki/Main_Page}{Simple English Wikipedia}\cite{url:sew}: Given an article, we want to obtain a number of similar articles, that can be used for recommendation and exploration. For this you will implement the Latent-Dirichlet-Allocation inference algorithm, based on Gibbs sampling as described in \cite{heinrich:pefta}. Finally you will have to write a project report where you present your implementation and results. \\
 
 Notes:
 \begin{itemize}
-	\item You can either chose Python or C++ as a programming language for your implementation.
-	\item You are allowed and encouraged to work in teams.
-	\item You must submit your code and your individually written project report. The oral exam will be based on your submissions.
-	\item The baseline to pass the exam is a working implementation of the LDA inference algorithm.
+	\item You can chose either Python or C++ as a programming language for your implementation.
+	\item You are not only allowed but encouraged to work in teams.
+	\item Nonetheless, you must submit your code and your project report individually. The oral exam will be based on your submissions.
+	\item In order to pass the exam you have to present a working implementation of the LDA inference algorithm.
 	\item Start early with the implementation process!
 	\item Ask, if there are problems.
+	\item Never forget that most problems arise during implementation. And that university staff might be on vacation during the holiday period.
 \end{itemize}
 
 \section{Latent Dirichlet Allocation}
 \begin{problem}
 	TThe LDA - Generative model \\
-	Implement the LDA generative model as described in \cite{heinrich:pefta}. Thus, write a function that creates documents, given a number of topics. Additional information canbe found in the original LDA paper \cite{blei:lda}.
+	Implement the LDA generative model as described in \cite{heinrich:pefta}. Thus, write a function that creates documents, given a set of topics. Additional information can be found in the original LDA paper \cite{blei:lda}.
 \end{problem}
 
 \begin{problem}
@@ -90,13 +91,13 @@ Notes:
 
 \section{Topic modeling with Wikipedia}
 
-The \href{https://simple.wikipedia.org/wiki/Main_Page}{Simple English Wikipedia} is an edition of the English Wikipedia written in basic English. The articles on the Simple English Wikipedia are, in general, shorter, use a limited vocabulary and grammatically less complex. Currently (November 2018) it contains a set of 140.794 articles. You will need to obtain a copy of the whole archive, preprocess the document and learn a model upon it.
+The \href{https://simple.wikipedia.org/wiki/Main_Page}{Simple English Wikipedia} is an edition of the English Wikipedia written in a very basic English. The articles in the Simple English Wikipedia are, in general, shorter, grammatically less complex and use a limited vocabulary. Currently (November 2018), it contains approximately 140.794 articles. You will need to obtain a copy of the whole archive, preprocess the document and learn a model upon it.
 
 \begin{problem}
 	DData gathering \\
 	Get the latest XML dump of the Simple English Wikipedia from  \href{https://dumps.wikimedia.org/simplewiki/20181120/}{here} \cite{url:sew-dump}. We are interested in the "All pages, current versions only" which excludes media files. Once you have downloaded the archive ($\sim$ 200.0 MB), unpack the XML file ($\sim 1.2 GB$).
 \end{problem} \\
-The XML file is structured in the following way:
+The XML file is structured as follows:
 \begin{lstlisting}[language=XML]
 <mediawiki>
   <siteinfo> ... </siteinfo>
@@ -105,7 +106,7 @@ The XML file is structured in the following way:
   <page> page M: content </page>
 </mediawiki>
 \end{lstlisting}
-Each page corresponds to one Wikipedia article. E.g. the page for article "April" looks as follows:
+Each page corresponds to one Wikipedia article. E.g. the page for the article "April" looks as follows:
 \begin{lstlisting}[language=XML]
 <page>
   <title>April</title>
@@ -131,7 +132,7 @@ Each page corresponds to one Wikipedia article. E.g. the page for article "April
 \end{lstlisting}
 For us there are two relevant tags:
 \begin{enumerate}
-  \item $<ns>$: The \href{https://en.wikipedia.org/wiki/Wikipedia:Namespace}{namespace} tag \cite{url:wiki-ns}. We are only interested in articles in the namespace "$0$" which are the set of main articles.
+  \item $<ns>$: The \href{https://en.wikipedia.org/wiki/Wikipedia:Namespace}{namespace} tag \cite{url:wiki-ns}. We are only interested in articles in the namespace "$0$" which is the set of main articles.
   \item $<text>$: Contains the article content. Note here that for simplicity we only want to process the "introductory" text for each article (see fig. \ref{fig:article_intro}).
 \end{enumerate}
 
@@ -148,18 +149,18 @@ For us there are two relevant tags:
 		\item Tokenization: Split text documents into words, lowercase the words and remove punctuation.
 		\item Lemmatization: Words in third person are changed to first person and verbs in past and future tenses are changed into present. Words are reduced to their root form.
 		\item Remove stopwords, since they are not expressive in our model.
-		\item Remove wikipedia specific expressions and tags. E.g "[[Some Text]]" should be transformed into "Some text". and "[[File:ColorfulSpringGarden.jpg|thumb|180px|right|[[Spring]]" should be transformed into "Spring".
+		\item Remove wikipedia specific expressions and tags. E.g "\texttt{[[Some Text]]}" should be transformed into "\texttt{Some text}". and "\texttt{[[File:ColorfulSpringGarden.jpg|thumb|180px|right|[[Spring]]}" should be transformed into "\texttt{Spring}".
 		\item Remove numbers.
 		\item ...
 	\end{itemize}
-	Your aim should be reduce the vocabulary size and ambiguity in your documents.
-	You can also try to filter words that are rarely or frequently used. Most of the relevant functions are already implemented and you can make used of them. In Python you can checkout the 
+	You should aim to reduce vocabulary size of the corpus and ambiguity in your documents.
+	You can also try to filter words that are either rarely or frequently used. Most of the relevant functions are already implemented and you can use them. In Python you might want to take a look on the 
 	\href{https://radimrehurek.com/gensim/parsing/preprocessing.html}{gensim} module \cite{url:python-gensim}. It offers broad support for most preprocessing requirements.
 \end{problem}
 
 \begin{problem}
 	TTraining the model \\
-	Train a model with your implementation of the LDA inference algorithm. To start with, use a properly sized subset of your whole document corpus. Since the key problem with unsupervised learning techniques like LDA is the validation of your results you will need manual validation to make sense of the results. Additionally there are various result visualization tools like \href{https://github.com/bmabey/pyLDAvis}{pyLDAvis} \cite{url:python-pyldavisl} that deliver great insights into your training results (see \ref{fig:pyldavis}).
+	Train a model with your implementation of the LDA inference algorithm. In the beginning, use a properly sized subset of your whole document corpus. Since the key problem with unsupervised learning techniques like LDA is the validation of your results, you will need manual validation to make sense of the results. Additionally there are various result visualization tools like \href{https://github.com/bmabey/pyLDAvis}{pyLDAvis} \cite{url:python-pyldavisl} that deliver great insights into your training results (see \ref{fig:pyldavis}).
 \end{problem}
 
 \begin{figure}
@@ -170,7 +171,7 @@ For us there are two relevant tags:
 
 \begin{problem}
 	DDocument exploration and recommendation \\
-	Given your model we want to able to answer queries of the form: Given article $A$, what are the $k$ most similar articles $B_1, ...,B_k$. As an use case, you can think of article recommendation for users of the Wikipedia. \\
+	Given your model we want to be able to answer queries of the form: Given article $A$, what are the $k$ most similar articles $B_1, ...,B_k$. As a use case, you can think of the article recommendation for users of the Wikipedia. \\
 	For this task you need a similarity measure, based on the document-topic distribution to compare documents. One possible measure is the \href{https://en.wikipedia.org/wiki/Jensen%E2%80%93Shannon_divergence}{Jensen–Shannon divergence}.
 	Once done, you can use this tool to ask and answer further questions ;)
 \end{problem}
@@ -178,8 +179,7 @@ For us there are two relevant tags:
 \section{Project report}
 
 \begin{problem}
-	WWrite a project report of approx. 5 - 10 content pages. Introduce the LDA model and write about your approach to solve the inference problems. Don't be overly verbose and stay formal whenever you can, but the report should be self-contained. Write about your implementation. Deliver performance results and give key insights. Write about your experiments on the Simple English Wikipedia dataset.
-	Possible questions. Also reference ALL your resources.
+	WWrite a project report of approx. 5 - 10 content pages. Introduce the LDA model and describe your approach to solve the inference problems. Don't be overly verbose and stay formal whenever you can, but the report should be self-contained. Write about your implementation. Deliver performance results and give key insights. Describe your experiments on the Simple English Wikipedia dataset, possible questions. Also reference \textbf{ALL} your resources.
 \end{problem} \\
 
 \begin{center}
