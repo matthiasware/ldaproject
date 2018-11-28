@@ -1,0 +1,10 @@
+\begin{thebibliography}{1}
+
+\bibitem{blei:lda}
+D.~M. Blei, A.~Y. Ng, and M.~I. Jordan, ``Latent dirichlet allocation,'' {\em
+  J. Mach. Learn. Res.}, vol.~3, pp.~993--1022, Mar. 2003.
+
+\bibitem{heinrich:pefta}
+G.~Heinrich, ``Parameter estimation for text analysis,'' tech. rep., 2004.
+
+\end{thebibliography}

@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: project.aux
+The style file: ieeetr.bst
+Database file #1: references.bib
+Warning--empty institution in heinrich:pefta
+You've used 2 entries,
+            1876 wiz_defined-function locations,
+            488 strings with 3676 characters,
+and the built_in function-call counts, 486 in all, are:
+= -- 49
+> -- 15
+< -- 0
++ -- 6
+- -- 4
+* -- 37
+:= -- 79
+add.period$ -- 2
+call.type$ -- 2
+change.case$ -- 3
+chr.to.int$ -- 0
+cite$ -- 3
+duplicate$ -- 22
+empty$ -- 42
+format.name$ -- 4
+if$ -- 110
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 1
+newline$ -- 9
+num.names$ -- 2
+pop$ -- 4
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 16
+stack$ -- 0
+substring$ -- 35
+swap$ -- 9
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 5
+width$ -- 3
+write$ -- 20
+(There was 1 warning)
