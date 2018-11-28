@@ -1,10 +1,33 @@
 \begin{thebibliography}{1}
 
+\bibitem{url:sew}
+``{Simple English Wikipedia}.''
+  \url{https://simple.wikipedia.org/wiki/Main_Page}.
+
+\bibitem{heinrich:pefta}
+G.~Heinrich, ``Parameter estimation for text analysis,'' tech. rep., 2004.
+
 \bibitem{blei:lda}
 D.~M. Blei, A.~Y. Ng, and M.~I. Jordan, ``Latent dirichlet allocation,'' {\em
   J. Mach. Learn. Res.}, vol.~3, pp.~993--1022, Mar. 2003.
 
-\bibitem{heinrich:pefta}
-G.~Heinrich, ``Parameter estimation for text analysis,'' tech. rep., 2004.
+\bibitem{url:sew-dump}
+``{Simple English Wikipedia - Archive}.''
+  \url{https://dumps.wikimedia.org/simplewiki/20181120/}.
+
+\bibitem{url:wiki-ns}
+``{Wikipedia - Namespace}.''
+  \url{https://en.wikipedia.org/wiki/Wikipedia:Namespace}.
+
+\bibitem{url:python-xml}
+``{Python XML module}.''
+  \url{https://docs.python.org/3.7/library/xml.etree.elementtree.html}.
+
+\bibitem{url:python-gensim}
+``{Python gensim module}.''
+  \url{https://radimrehurek.com/gensim/parsing/preprocessing.html}.
+
+\bibitem{url:python-pyldavisl}
+``{Python pyLDAvis module}.'' \url{https://github.com/bmabey/pyLDAvisl}.
 
 \end{thebibliography}

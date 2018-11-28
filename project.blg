@@ -4,36 +4,36 @@ The top-level auxiliary file: project.aux
 The style file: ieeetr.bst
 Database file #1: references.bib
 Warning--empty institution in heinrich:pefta
-You've used 2 entries,
+You've used 8 entries,
             1876 wiz_defined-function locations,
-            488 strings with 3676 characters,
-and the built_in function-call counts, 486 in all, are:
-= -- 49
-> -- 15
+            506 strings with 4238 characters,
+and the built_in function-call counts, 1092 in all, are:
+= -- 103
+> -- 21
 < -- 0
-+ -- 6
++ -- 12
 - -- 4
-* -- 37
-:= -- 79
-add.period$ -- 2
-call.type$ -- 2
-change.case$ -- 3
+* -- 55
+:= -- 133
+add.period$ -- 8
+call.type$ -- 8
+change.case$ -- 9
 chr.to.int$ -- 0
-cite$ -- 3
-duplicate$ -- 22
-empty$ -- 42
+cite$ -- 9
+duplicate$ -- 46
+empty$ -- 150
 format.name$ -- 4
-if$ -- 110
+if$ -- 284
 int.to.chr$ -- 0
-int.to.str$ -- 2
+int.to.str$ -- 8
 missing$ -- 1
-newline$ -- 9
+newline$ -- 27
 num.names$ -- 2
-pop$ -- 4
+pop$ -- 40
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 16
+skip$ -- 52
 stack$ -- 0
 substring$ -- 35
 swap$ -- 9
@@ -43,6 +43,6 @@ top$ -- 0
 type$ -- 0
 warning$ -- 1
 while$ -- 5
-width$ -- 3
-write$ -- 20
+width$ -- 9
+write$ -- 56
 (There was 1 warning)

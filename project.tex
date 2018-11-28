@@ -66,7 +66,7 @@
 \date{}
 \maketitle
 
-In this project you will implement a document exploration system for the \href{https://simple.wikipedia.org/wiki/Main_Page}{Simple English Wikipedia}: Given an article, we want to obtain a number of similar articles, that can be used for recommendation and exploration. For this you will implement the Latent-Dirichlet-Allocation inference algorithm, based on on Gibbs sampling as described in \cite{heinrich:pefta}. Finally you will have to write a project report where you present your implementation and results. \\
+In this project you will implement a document exploration system for the \href{https://simple.wikipedia.org/wiki/Main_Page}{Simple English Wikipedia}\cite{url:sew}: Given an article, we want to obtain a number of similar articles, that can be used for recommendation and exploration. For this you will implement the Latent-Dirichlet-Allocation inference algorithm, based on on Gibbs sampling as described in \cite{heinrich:pefta}. Finally you will have to write a project report where you present your implementation and results. \\
 
 Notes:
 \begin{itemize}
@@ -81,7 +81,7 @@ Notes:
 \section{Latent Dirichlet Allocation}
 \begin{problem}
 	TThe LDA - Generative model \\
-	Implement the LDA generative model as described in \cite{heinrich:pefta}. Thus, write a function that creates documents, given a number of topics.
+	Implement the LDA generative model as described in \cite{heinrich:pefta}. Thus, write a function that creates documents, given a number of topics. Additional information canbe found in the original LDA paper \cite{blei:lda}.
 \end{problem}
 
 \begin{problem}
@@ -94,7 +94,7 @@ The \href{https://simple.wikipedia.org/wiki/Main_Page}{Simple English Wikipedia}
 
 \begin{problem}
 	DData gathering \\
-	Get the latest XML dump of the Simple English Wikipedia from  \href{https://dumps.wikimedia.org/simplewiki/20181120/}{here}. We are interested in the "All pages, current versions only" which excludes media files. Once you have downloaded the archive ($\sim$ 200.0 MB), unpack the XML file ($\sim 1.2 GB$).
+	Get the latest XML dump of the Simple English Wikipedia from  \href{https://dumps.wikimedia.org/simplewiki/20181120/}{here} \cite{url:sew-dump}. We are interested in the "All pages, current versions only" which excludes media files. Once you have downloaded the archive ($\sim$ 200.0 MB), unpack the XML file ($\sim 1.2 GB$).
 \end{problem} \\
 The XML file is structured in the following way:
 \begin{lstlisting}[language=XML]
@@ -131,7 +131,7 @@ Each page corresponds to one Wikipedia article. E.g. the page for article "April
 \end{lstlisting}
 For us there are two relevant tags:
 \begin{enumerate}
-  \item $<ns>$: The \href{https://en.wikipedia.org/wiki/Wikipedia:Namespace}{namespace} tag. We are only interested in articles in the namespace "$0$" which are the set of main articles.
+  \item $<ns>$: The \href{https://en.wikipedia.org/wiki/Wikipedia:Namespace}{namespace} tag \cite{url:wiki-ns}. We are only interested in articles in the namespace "$0$" which are the set of main articles.
   \item $<text>$: Contains the article content. Note here that for simplicity we only want to process the "introductory" text for each article (see fig. \ref{fig:article_intro}).
 \end{enumerate}
 
@@ -143,7 +143,7 @@ For us there are two relevant tags:
 
 \begin{problem}
 	PPreprocessing \\
-	Extract the introductory text for each article. In Python you can use the \href{https://docs.python.org/3.7/library/xml.etree.elementtree.html}{XML} module to parse the document and extract the relevant text segments. Once obtained, you have to process the raw text segments that will make your documents:
+	Extract the introductory text for each article. In Python you can use the \href{https://docs.python.org/3.7/library/xml.etree.elementtree.html}{XML} module \cite{url:python-xml} to parse the document and extract the relevant text segments. Once obtained, you have to process the raw text segments that will make your documents:
 	\begin{itemize}
 		\item Tokenization: Split text documents into words, lowercase the words and remove punctuation.
 		\item Lemmatization: Words in third person are changed to first person and verbs in past and future tenses are changed into present. Words are reduced to their root form.
@@ -154,12 +154,12 @@ For us there are two relevant tags:
 	\end{itemize}
 	Your aim should be reduce the vocabulary size and ambiguity in your documents.
 	You can also try to filter words that are rarely or frequently used. Most of the relevant functions are already implemented and you can make used of them. In Python you can checkout the 
-	\href{https://radimrehurek.com/gensim/parsing/preprocessing.html}{gensim module}. It offers broad support for most preprocessing requirements.
+	\href{https://radimrehurek.com/gensim/parsing/preprocessing.html}{gensim} module \cite{url:python-gensim}. It offers broad support for most preprocessing requirements.
 \end{problem}
 
 \begin{problem}
 	TTraining the model \\
-	Train a model with your implementation of the LDA inference algorithm. To start with, use a properly sized subset of your whole document corpus. Since the key problem with unsupervised learning techniques like LDA is the validation of your results you will need manual validation to make sense of the results. Additionally there are various result visualization tools like \href{https://github.com/bmabey/pyLDAvis}{pyLDAvis} that deliver great insights into your training results (see \ref{fig:pyldavis}).
+	Train a model with your implementation of the LDA inference algorithm. To start with, use a properly sized subset of your whole document corpus. Since the key problem with unsupervised learning techniques like LDA is the validation of your results you will need manual validation to make sense of the results. Additionally there are various result visualization tools like \href{https://github.com/bmabey/pyLDAvis}{pyLDAvis} \cite{url:python-pyldavisl} that deliver great insights into your training results (see \ref{fig:pyldavis}).
 \end{problem}
 
 \begin{figure}
